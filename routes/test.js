@@ -1,24 +1,15 @@
 
-  import mongoose from 'mongoose';
-  const personne = mongoose.model('personne', personne);
+const mongoose = require('mongoose');
 
-  const small = new personne({ name: 'abir' });
-    small.save(function (err) {
-      if (err) return handleError(err);
-      // saved!
-    });
-    
-    // or
-    
-    personne.create({ name: 'small' }, function (err, name) {
-      if (err) return handleError(err);
-      // saved!
-    });
-    
-    // or, for inserting large batches of documents
-    personne.insertMany([{ name: 'small' }], function(err) {
-    
-    });
+  /*const personne = mongoose.model('personne', personne);*/
+  const TankSchema = new mongoose.Schema({
+    size: String
+  });
   
+  const Tank = mongoose.model('Tank', TankSchema);
+ 
+  const server = '127.0.0.1:27017'; // REPLACE WITH YOUR DB SERVER
+const database = 'contact2'; 
+  const db = mongoose.connect(`mongodb://${server}/${database}`);
   
-  
+  console.log("bonjour");
